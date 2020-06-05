@@ -18,6 +18,7 @@ use App\Usercart;
 use App\Restuarant;
 
 use Auth;
+use Mail;
 class ShopController extends Controller
 {
   /**
@@ -85,7 +86,7 @@ class ShopController extends Controller
 
   public function register(Request $request)
   {
-
+    /* Validation */
     $this->validate($request, [
       'name' => 'required',
       'email' => 'required|email|max:255|unique:restuarants',
@@ -100,18 +101,30 @@ class ShopController extends Controller
     ]);
    
     try {
-      Restuarant::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'password' => $request->password,
-        'address' => $request->address,
-        'cuisine' => $request->cuisine,
-        'availability' => $request->availability,
-        'sex' => $request->sex,
-        'pin_code' => $request->pin_code,
-        'about_chef' => $request->about_chef
-      ]);
+      /* Data */
+        $data = [
+          'name' => $request->name,
+          'email' => $request->email,
+          'phone' => $request->phone,
+          'password' => $request->password,
+          'address' => $request->address,
+          'cuisine' => $request->cuisine,
+          'availability' => $request->availability,
+          'sex' => $request->sex,
+          'pin_code' => $request->pin_code,
+          'about_chef' => $request->about_chef
+        ];
+
+      /* Store */
+        $restuarant = Restuarant::create($data);
+
+      /* Email */
+        Mail::send('shop.auth.register-mail', $data, function($message) {
+          $message->to('shoorik@purpledot.in', 'Admin')->subject('A new user registered!');
+        });
+        Mail::send('shop.auth.register-mail', $data, function($message) {
+          $message->to('i@gohomely.com', 'Admin')->subject('A new user registered!');
+        });
 
       return back()->with('flash_success',trans('home.delivery_boy.created'));
     } catch (Exception $e) {

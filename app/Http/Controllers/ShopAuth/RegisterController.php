@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Controller\Resource\ShopResource;
 
-use Mail;
-
 class RegisterController extends Controller
 {
     /*
@@ -130,16 +128,6 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        // $data = array('name'=>"Virat Gandhi");
-        // Mail::send('mail', $data, function($message) {
-        //      $message->to('jamingring@outlook.com', 'Tutorials Point')->subject
-        //         ('Laravel Basic Testing Mail');
-        //      $message->from('profcoder810@gmail.com','Virat Gandhi');
-        //   });
-        //   echo "Basic Email Sent. Check your inbox.";
-
-        // return;
-
         return view('shop.auth.register');
     }
 
