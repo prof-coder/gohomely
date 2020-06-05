@@ -131,6 +131,7 @@
                         <a href="javascript::void(0);" onclick="FBLogin(1);" class="social-login-item"><i class="ion-social-facebook"></i></a>
                         <a id="sign-in-or-out-button"  data-id="register" href="javascript:void(0);" class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>
                     </div>
+                    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
                         <div class="print-error-msg alert-danger error_phone"></div>  
                         <input type="hidden" id="login_by" value="" name="login_by" />
                         <input type="hidden" name="accessToken" value="" id="accessToken" />
@@ -190,6 +191,26 @@
             padding: 0px !important;
         }
     </style>
+
+<!-- 
+<script>
+  function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+  }
+</script> 
+-->
+
 <script>
 
 var options = {

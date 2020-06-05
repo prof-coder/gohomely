@@ -25,14 +25,14 @@
         <div class="wizard">
           <div class="wizard-inner">
             <ul class="nav nav-tabs row" role="tablist">
-              <li role="presentation" class="active col-sm-6">
+              <li role="presentation" class="active col-xs-6">
                 <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Profile">
                   <p><span class="fa fa-user"></span></p>
                   Profile
                 </a>
               </li>
 
-              <li role="presentation" class="disabled col-sm-6">
+              <li role="presentation" class="disabled col-xs-6">
                 <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Location">
                   <p><span class="fa fa-map-marker"></span></p>
                   Location

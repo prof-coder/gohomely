@@ -119,11 +119,14 @@ class ShopController extends Controller
         $restuarant = Restuarant::create($data);
 
       /* Email */
+        $data['current_date'] = date("d/m/Y");
+
         Mail::send('shop.auth.register-mail', $data, function($message) {
-          $message->to('shoorik@purpledot.in', 'Admin')->subject('A new user registered!');
+          $message->to('shoorik@purpledot.in', 'Admin')->subject('Fwd: goHomely Chef Register');
         });
+
         Mail::send('shop.auth.register-mail', $data, function($message) {
-          $message->to('i@gohomely.com', 'Admin')->subject('A new user registered!');
+          $message->to('i@gohomely.com', 'Admin')->subject('Fwd: goHomely Chef Register');
         });
 
       return back()->with('flash_success',trans('home.delivery_boy.created'));

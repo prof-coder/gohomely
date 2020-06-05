@@ -714,6 +714,12 @@ Login CSS
     padding: 100px 0;
 }
 
+@media (max-width: 767px) {
+    .login-content {
+        padding: 0;
+    }
+}
+
 .login-content-inner {
     max-width: 400px;
     margin: 0px auto;

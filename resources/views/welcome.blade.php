@@ -8,6 +8,12 @@
   <title>{{Setting::get('site_title')}}</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <!-- 
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="570442769742-70a8s8h49d510b3ukdat0d9q4l9h3d1l.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script> 
+  -->
+
   <link rel="shortcut icon" href="{{ Setting::get('site_favicon', asset('favicon.ico')) }}">
   <!-- Bootstrap CSS -->
   <link href="{{ asset('assets/user/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -95,7 +101,9 @@
               <form  action="{{url('restaurants')}}" id="my_map_form" >
                  
                 <div class="log-location-search input-group">
-                  <input type="text" id="pac-input" name="search_loc" class="form-control" placeholder="Start typing your appartment name, street name, locality" required autofocus>
+                  <div class="input-group-cover">
+                    <input type="text" id="pac-input" name="search_loc" class="form-control" placeholder="Start typing your appartment name, street name, locality" required autofocus>
+                  </div>
                   <!-- <span class="input-group-addon locate-me-btn my_map_form_current"><i class="ion-pinpoint"></i>  Locate Me</span> -->
                   <span class="input-group-addon log-search-btn"><button><i class="ion-android-search"></i></button></span>
                   

@@ -43,7 +43,7 @@
         <div class="container">
           <div class="food-section row js-restaurant-wrapper" id="filter-menu">
             <!-- Food Section Left Starts -->
-            <div class="food-sec-left col-md-3 col-sm-4 col-xs-12 js-restaurant-filters-cover">
+            <div class="food-sec-left col-md-3 col-sm-4 col-xs-12 js-restaurant-filters-cover hidden-xs hidden-xs">
               <!-- Restaurant Filters Starts -->
               <div class="restaurant-filters">
                 <!-- Restaurant Filter Box Starts -->
@@ -144,6 +144,55 @@
               </div>
               <!-- Restaurant Filters Ends -->
             </div>
+            <nav class="navbar navbar-default navbar-fixed-top visible-xs hidden" id="secondary-menu">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navgation-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand logoback" href="javascript:void(0)">
+                    <h4 class="navbar-scroll-title js-scroll-title">Traditional</h4>
+                  </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navgation-2">
+                  <ul class="nav navbar-nav">
+                    <a href="#treditions" class="res-filter-box filter-scroll-menu active">
+                      <span class="res-filter-txt">
+                        <h6 class="res-filter-name">Traditional</h6>
+                      </span>
+                    </a>
+                    <a href="#famous" class="res-filter-box filter-scroll-menu">
+                      <span class="res-filter-txt">
+                        <h6 class="res-filter-name">Famous</h6>
+                      </span>
+                    </a>
+                    <a href="#offers" class="res-filter-box filter-scroll-menu">
+                      <span class="res-filter-txt">
+                        <h6 class="res-filter-name">Offers</h6>
+                      </span>
+                    </a>
+                    <a href="#vegetarian" class="res-filter-box filter-scroll-menu">
+                      <span class="res-filter-txt">
+                        <h6 class="res-filter-name">Pure Veg</h6>
+                      </span>
+                    </a>
+                    <a href="#trending" class="res-filter-box filter-scroll-menu">
+                      <span class="res-filter-txt">
+                        <h6 class="res-filter-name">Trending</h6>
+                      </span>
+                    </a>
+                    <a href="#see-all" class="res-filter-box filter-scroll-menu">
+                      <span class="res-filter-txt">
+                        <h6 class="res-filter-name">Explore All Chefs</h6>
+                      </span>
+                    </a>
+                  </ul>
+                </div>
+              </div>
+            </nav>
             <!-- Food Section Left Ends -->
             <!-- Food Section Right Starts -->
             <div class="food-sec-right col-md-9 col-sm-8 col-xs-12">
@@ -394,13 +443,13 @@
               </div>
               <div class="all-res-head-right col-md-7 p-0 text-right">
                 <ul class="nav nav-tabs" role="tablist">
-                  <li class="active">
+                  <!-- <li class="active">
                     <a href="#relevance" aria-controls="relevance" role="tab" data-toggle="tab">Relevance</a>
-                  </li>
+                  </li> -->
                   <!-- <li>
                     <a href="#cost-for-two" aria-controls="cost-for-two" role="tab" data-toggle="tab">Cost for Two</a>
                   </li> -->
-                  <li>
+                  <li class="active">
                     <a href="#delivery-time" aria-controls="delivery-time" role="tab" data-toggle="tab">Delivery time</a>
                   </li>
                   <!-- <li>
@@ -413,7 +462,7 @@
                  
               </div>
               <div class="all-res-head-right col-md-1 p-0" >
-               <a href="#filter-menu"><i class="ion-arrow-up-c up-filter"></i></a> 
+               <a href="#filter-menu" class="back-to-top"><i class="ion-arrow-up-c up-filter"></i></a> 
               </div>
             </div>
             <div class="tab-content all-res-tab-content">
@@ -602,7 +651,7 @@
       <div class="filters-sidebar">
         <!-- Filter Section Starts -->
         <div class="filters-section">
-          <h6>Show Restaurants With</h6>
+          <h6>Show Chefs With</h6>
           <!-- Filter Box Starts -->
           <div class="filter-box row">
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -646,7 +695,7 @@
     <!-- Filter Footer Starts -->
     <div class="filter-footer aside-footer">
       <a href="#" class="clear-btn">Clear</a>
-      <button type="submit" class="show-btn" data-dismiss="aside">Show Restaurants</button>
+      <button type="submit" class="show-btn" data-dismiss="aside">Show Chefs</button>
     </div>
     <!-- Filter Footer Ends -->
     </form>

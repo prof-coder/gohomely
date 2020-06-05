@@ -21,7 +21,7 @@
               <!-- Restaurant Banner Ratings Starts -->
               <div class="res-banner-ratings row">
                 <div class="res-banner-rate-block col-md-2 col-xs-4">
-                  <p class="res-banner-rate-txt1"><i class="fa fa-star"></i>{{$Shop->rating}}</p>
+                  <p class="res-banner-rate-txt1"><i class="fa fa-star"></i> {{$Shop->rating}}</p>
                   <p class="res-banner-rate-txt2">Ratings</p>
                 </div>
                 <div class="res-banner-rate-block col-md-2 col-xs-4">

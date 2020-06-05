@@ -78,9 +78,14 @@ $('.log-loc-txt-slide').slick({
     fade: true
 });
 
-$(window).scroll(function() {
-    var scroll = $(window).scrollTop();
+let target='', menu='', $target='', scrollToPos, scrollPosition, headerHeight
 
+$(document.body).on('touchmove', windowOnScroll); // for mobile
+$(window).on('scroll', windowOnScroll);
+$('body').on('scroll', windowOnScroll);
+
+function windowOnScroll() {
+    var scroll = $(window).scrollTop() || $("body").scrollTop();
     var coverWidth = 210;
 
     if ($('.restaurant-filters').closest('.js-restaurant-filters-cover').length > 0) {
@@ -91,10 +96,13 @@ $(window).scroll(function() {
         $(".restaurant-filters").addClass("res-filters-fixed").css({
             width: coverWidth
         });
+
+        $('#secondary-menu').removeClass('hidden')
     } else {
         $(".restaurant-filters").removeClass("res-filters-fixed").css({
             width: 'auto'
         });
+        $('#secondary-menu').addClass('hidden')
     }
 
     if (scroll >= 500) {
@@ -114,39 +122,53 @@ $(window).scroll(function() {
     } else {
         $(".check-cart").removeClass("check-cart-fixed");
     }
-});
+}
 
 $(document).ready(function() {
     $(document).on("scroll", onScroll);
+    $('body').on("scroll", onScroll);
 
     //smoothscroll
     $('a[href^="#"]').on('click', function(e) {
         e.preventDefault();
-        $(document).off("scroll");
+        $(document).off("scroll")
+        $('body').off("scroll")
 
         $('a').each(function() {
             $(this).removeClass('active');
         })
         $(this).addClass('active');
 
-        var target = this.hash,
-            menu = target;
-        $target = $(target);
+        target = this.hash
+        menu = target
+        $target = $(target)
+
+        scrollToPos = $target.offset().top + 2
+
+        if ($(window).width() < 768) {
+            scrollPosition = $(window).scrollTop() || $("body").scrollTop()
+            scrollToPos = $target.offset().top + 2 + scrollPosition - 75
+        }
+
         $('html, body, #custom-modal').stop().animate({
-            'scrollTop': $target.offset().top + 2
+            'scrollTop': scrollToPos
         }, 500, 'swing', function() {
             window.location.hash = target;
-            onScroll();
+            if ($(window).width() >= 768) {
+                onScroll();
+            }
+            $(document).on("scroll", onScroll);
+            $('body').on("scroll", onScroll);
         });
     });
 });
-$(window).on("scroll", onScroll);
 
-let wrapperTop = 0, sidebarHeight = 0, offset = 75;
+let wrapperTop = 0, sidebarHeight = 0, offset = 75, elementTop = 0;
 
 function onScroll(event) {
-    var scrollPos = $(document).scrollTop();
+    var scrollPos = $(window).scrollTop() || $("body").scrollTop();
     var wrapperHeight = 0;
+
     if (($('.js-restaurant-wrapper').length > 0) && ($('.js-restaurant-filters-cover').length > 0)) {
         wrapperHeight = $('.js-restaurant-wrapper').height();
         wrapperTop = $('.js-restaurant-wrapper').offset().top;
@@ -159,13 +181,31 @@ function onScroll(event) {
             $(".restaurant-filters").removeClass('res-filters-absolute-bottom');
         }
     }
+
     $('.filter-scroll-menu').each(function() {
+
+        if (($(window).width() >= 768) && ($(this).closest('.nav').length > 0)) {
+            return false;
+        }
+
         var currLink = $(this);
         var refElement = $(currLink.attr("href"));
-        if ((refElement.offset().top) <= scrollPos) {
+
+        headerHeight = $('#secondary-menu').height()
+        elementTop = refElement.offset().top;
+
+        if ($(window).width() < 768) {
+            elementTop = refElement.offset().top + scrollPos - 75;
+        }
+
+        if (elementTop <= scrollPos) {
         // if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
             $('.filter-scroll-menu').removeClass("active");
-            currLink.addClass("active");
+             $(this).addClass("active");
+
+            if ($(window).width() < 768) {
+                $('.js-scroll-title').html($(currLink).html())
+            }
         } else {
             currLink.removeClass("active");
         }
